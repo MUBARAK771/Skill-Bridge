@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, ChevronDown } from "lucide-react";
 import { Suspense } from "react";
+import { Input } from "@/components/ui/input"
 
 const STATES = [
   "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
@@ -56,22 +57,22 @@ function SignupForm() {
         <div className="flex gap-3">
           <div className="flex flex-col gap-1 text-left flex-1">
             <label className="text-sm font-medium text-gray-700">First Name</label>
-            <input
+            <Input
               required
               placeholder="First Name"
               value={form.firstName}
               onChange={(e) => set("firstName", e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 transition"
+              className="border-gray-300 rounded-lg px-4 py-3 text-sm"
             />
           </div>
           <div className="flex flex-col gap-1 text-left flex-1">
             <label className="text-sm font-medium text-gray-700">Last Name</label>
-            <input
+            <Input
               required
               placeholder="Last Name"
               value={form.lastName}
               onChange={(e) => set("lastName", e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 transition"
+              className="border-gray-300 rounded-lg px-4 py-3 text-sm"
             />
           </div>
         </div>
@@ -79,13 +80,13 @@ function SignupForm() {
         {/* Email */}
         <div className="flex flex-col gap-1 text-left">
           <label className="text-sm font-medium text-gray-700">Work email address</label>
-          <input
+          <Input
             type="email"
             required
             placeholder="example@gmail.com"
             value={form.email}
             onChange={(e) => set("email", e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 transition"
+            className="border-gray-300 rounded-lg px-4 py-3 text-sm"
           />
         </div>
 
@@ -93,14 +94,14 @@ function SignupForm() {
         <div className="flex flex-col gap-1 text-left">
           <label className="text-sm font-medium text-gray-700">Password</label>
           <div className="relative">
-            <input
+            <Input
               type={showPassword ? "text" : "password"}
               required
               minLength={8}
               placeholder="Password (8 or more characters)"
               value={form.password}
               onChange={(e) => set("password", e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 pr-11 text-sm outline-none focus:border-blue-500 transition"
+              className="w-full border-gray-300 rounded-lg px-4 py-3 pr-11 text-sm"
             />
             <button
               type="button"

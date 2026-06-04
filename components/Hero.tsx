@@ -13,11 +13,20 @@ export default function Hero() {
       }}
       className="w-full h-screen flex flex-col items-center justify-center gap-8 sm:gap-10 md:gap-14 h-full pt-24 sm:pt-32 pb-10 sm:pb-14 px-4"
     >
-      <h1 className=" font-semibold text-primary text-3xl text-center md:hidden">Bridging Talent With Opportunity</h1>
+      <h1
+  className="
+    block md:hidden
+    text-3xl text-center font-semibold leading-none
+    bg-gradient-to-r from-[#5B5BF7] via-[#6C63FF] to-[#7A5CFF]
+    bg-clip-text text-transparent
+  "
+>
+  Bridging Talent With Opportunity
+</h1>
       {/* Tagline */}
-      <p className="text-background text-xl sm:text-xl md:text-2xl text-shadow-lg text-center max-w-xs sm:max-w-lg md:max-w-2xl leading-relaxed">
-        Connecting skilled Africans with companies, creators, and opportunities worldwide.
-      </p>
+      <p className="text-background text-sm sm:text-xl md:text-2xl text-center max-w-md sm:max-w-lg md:max-w-2xl leading-relaxed">
+  Connecting skilled Africans with companies, creators, and opportunities worldwide.
+</p>
 
       {/* CTA Button */}
       <Link

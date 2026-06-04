@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,13 +35,13 @@ export default function LoginPage() {
           <label className="text-sm font-medium text-gray-700">
             Email Address
           </label>
-          <input
+          <Input
             type="email"
             placeholder="Enter Email Address"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 transition"
+            className="border-gray-300 rounded-lg px-4 py-3 text-sm"
           />
         </div>
 
@@ -48,13 +49,13 @@ export default function LoginPage() {
         <div className="flex flex-col gap-1.5 text-left">
           <label className="text-sm font-medium text-gray-700">Password</label>
           <div className="relative">
-            <input
+            <Input
               type={showPassword ? "text" : "password"}
               placeholder="Enter Password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 pr-11 text-sm outline-none focus:border-blue-500 transition"
+              className="w-full border-gray-300 rounded-lg px-4 py-3 pr-11 text-sm"
             />
             <button
               type="button"

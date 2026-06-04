@@ -7,7 +7,7 @@ export default function SuccessPage() {
 
   return (
     <>   
-    <div className="flex absolute flex-col items-center top-0 h-screen backdrop-blur-md w-full left-0 justify-center text-center gap-7">
+    <div className="flex absolute flex-col items-center top-0 h-screen bg-[#DEE8FC33] backdrop-blur-md w-full left-0 justify-center text-center gap-7">
       {/* Check Icon */}
       <div
         className="w-20 h-20 rounded-full flex items-center justify-center"

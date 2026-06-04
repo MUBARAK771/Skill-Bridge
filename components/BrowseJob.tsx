@@ -4,7 +4,7 @@ import { CircleArrowRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import JobCard, { BrowseJobCardProps } from "./BrowserProps";
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const jobs: BrowseJobCardProps[] = [
   {
     company: "PayStack",
@@ -55,13 +55,6 @@ const jobs: BrowseJobCardProps[] = [
     href: PATHS.Jobs,
   },
 ]
-const navList =[
-        {label:"All", path:"All"},
-        {label:"Full-time", path:"Full-time"},
-        {label:"Contract", path:"Contract"},
-        {label:"Freelance", path:"Freelance"},
-        {label:"Part-time", path: "Part-time"},
-    ]
 
 
 export default function FeaturedBrowserJob() {
@@ -70,33 +63,28 @@ export default function FeaturedBrowserJob() {
     <section className="flex flex-col px-5 sm:px-8 md:px-6 lg:px-4 xl:px-2 mt-10 gap-8 pb-16">
 
       {/* Section Header */}
-      <nav className="hidden md:flex items-center gap-10">
-        {navList.map((item) => {
-          const isActive = pathname === item.path;
-
-          return (
-            <Link
-              key={item.label}
-              href={item.path}
-              className={`text-[14px] font-medium transition-all ${
-                isActive
-                  ? "text-primary bg-card-foreground rounded-sm border py-2 px-7 font-semibold border-primary"
-                  : "text-muted font-medium hover:text-primary"
-              }`}
-            >
-              {item.label}
-            </Link>
-          );
-        })}
-        
-      </nav>
-
-      {/* Job Cards Grid — 1 col mobile, 2 col md+ */}
+      
+      <Tabs defaultValue="All" className="w-full shadow-none ">
+  <TabsList className="mb-9 bg-transparent h-30 shadow-none w-[50%] px-7  py-7 justify-start" aria-label="Job Type Filter">
+    <TabsTrigger value="All" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">All</TabsTrigger>
+    <TabsTrigger value="full-time" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Full-time</TabsTrigger>
+    <TabsTrigger value="contract" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Contract</TabsTrigger>
+    <TabsTrigger value="freelance" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Freelance</TabsTrigger>
+    <TabsTrigger value="part-time" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Part-time</TabsTrigger>
+  </TabsList>
+  <TabsContent value="All">{/* Job Cards Grid — 1 col mobile, 2 col md+ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-9 gap-x-14">
         {jobs.map((job, i) => (
           <JobCard key={i} {...job} />
         ))}
-      </div>
+      </div></TabsContent>
+  <TabsContent value="full-time">Full-time jobs will be displayed here.</TabsContent>
+  <TabsContent value="contract">Contract jobs will be displayed here.</TabsContent>
+  <TabsContent value="freelance">Freelance jobs will be displayed here.</TabsContent>
+  <TabsContent value="part-time">Part-time jobs will be displayed here.</TabsContent>
+</Tabs>
+
+      
     </section>
   )
 }
