@@ -117,23 +117,23 @@ export default function JobCard({
           </p>
         </div>
 
-        {/* Button */}
-        <Link
-          href={href}
-          className=" flex sm:flex items-center gap-2 rounded-lg border border-[#2563EB] px-5 py-2 mt-auto text-base font-semibold text-[#2563EB] hover:bg-card-foreground transition-all"
-        >
-          View
-          <CircleArrowRight size={18} />
-        </Link>
-        <span
-              style={{
-                color: Propty.color,
-                transform: "rotate(280deg)",
-                float: "right",
-              }}
-            >
-              {Propty.icon}
-            </span>
+        <div className="flex flex-col items-end gap-2 mt-auto">
+          <Link
+            href={href}
+            className="flex items-center gap-2 rounded-lg border border-[#2563EB] px-5 py-2 text-base font-semibold text-[#2563EB] hover:bg-card-foreground transition-all"
+          >
+            View
+            <CircleArrowRight size={18} />
+          </Link>
+          <span
+            style={{
+              color: Propty.color,
+              transform: "rotate(280deg)",
+            }}
+          >
+            {Propty.icon}
+          </span>
+        </div>
       </div>
     </div>
   );

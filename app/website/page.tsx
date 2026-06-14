@@ -226,7 +226,7 @@ export default function Website() {
         {/* Division */}
         <div className="flex justify-center">
           <Tabs defaultValue="account" className="w-full ">
-            <TabsList className="bg-[#DEE8FC] w-max mx-auto rounded-lg border border-[#f3f3fe] mb-18 px-19 py-7">
+            <TabsList className="bg-[#DEE8FC] w-max mx-auto rounded-lg border border-[#f3f3fe] mb-18 px-14 py-8">
               <TabsTrigger value="account" className="py-5 px-5 cursor-pointer">Talent</TabsTrigger>
               <TabsTrigger value="password" className="py-5 px-5 cursor-pointer">Employer</TabsTrigger>
             </TabsList>
@@ -309,8 +309,8 @@ export default function Website() {
     className="
       absolute
       right-[3%]
-      top-[25%]
-      w-[220px]
+      top-[15%]
+      w-[120px]
       md:w-[295px]
       z-20
       object-contain
@@ -324,8 +324,8 @@ export default function Website() {
     className="
       absolute
       left-[3%]
-      top-[45%]
-      w-[220px]
+      top-[50%]
+      w-[120px]
       md:w-[295px]
       z-20
       object-contain

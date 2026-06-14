@@ -66,7 +66,7 @@ export default function JobCard({
   };
   return (
     <div className="w-full rounded-[24px] border border-[#e5e7eb] bg-[#f8fafc] p-5 shadow-sm">
-      <div className="flex items-start gap-4">
+      <div className="flex items-start justify-between">
         {/* Content */}
         <div className="flex-1 min-w-0">
           {/* Header */}
@@ -117,23 +117,24 @@ export default function JobCard({
           </p>
         </div>
 
-        {/* Button */}
-        <Link
-          href={href}
-          className=" flex sm:flex items-center gap-2 rounded-lg border border-[#2563EB] px-5 py-2 mt-auto text-base font-semibold text-[#2563EB] hover:bg-card-foreground transition-all"
-        >
-          View
-          <CircleArrowRight size={18} />
-        </Link>
-        <span
-              style={{
-                color: Propty.color,
-                transform: "rotate(280deg)",
-                float: "right",
-              }}
-            >
-              {Propty.icon}
-            </span>
+        <div className="flex flex-col items-end h-38 justify-between gap-2 mt-auto">
+          <span
+            style={{
+              color: Propty.color,
+              fontSize:"30px",
+              transform: "rotate(280deg)",
+            }}
+          >
+            {Propty.icon}
+          </span>
+          <Link
+            href={href}
+            className="flex items-center gap-2 rounded-lg border border-[#2563EB] px-5 py-2 text-base font-semibold text-[#2563EB] hover:bg-card-foreground transition-all"
+          >
+            View
+            <CircleArrowRight size={18} />
+          </Link>
+        </div>
       </div>
     </div>
   );

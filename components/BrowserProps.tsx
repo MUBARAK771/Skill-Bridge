@@ -1,16 +1,18 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { ArrowRight, CircleArrowRight, Tag } from "lucide-react";
+import { ArrowRight, Check, CircleArrowRight, Tag } from "lucide-react";
 import Link from "next/link";
 import PATHS from "@/route"
-export interface BrowseJobCardProps {
+export interface JobCardProps {
   company: string;
-  location?: string;
   title: string;
+  location: string;
+  workType: string;
   salary: string;
   tags: string[];
-  applicants?: string;
-  postedAt?: string;
+  applicants: number;
+  postedAt: string;
+  status: "apply" | "applied";
   href?: string;
 }
 
@@ -50,14 +52,16 @@ function getAvatarColor(letter: string): string {
 
 export default function JobCard({
   company,
-  location = "Lagos (Remote)",
   title,
   salary,
   tags,
-  applicants = "34 applicants",
-  postedAt = "2h ago",
-  href = "/",
-}: BrowseJobCardProps) {
+  location,
+  applicants,
+  postedAt,
+  workType,
+  href,
+  status,
+}: JobCardProps) {
   const initial = company.charAt(0).toUpperCase();
   const avatarBg = getAvatarColor(initial);
   const Propty = {
@@ -65,12 +69,12 @@ export default function JobCard({
     color: avatarBg,
   };
   return (
-    <div className="w-[100%] rounded-[24px] border border-[#e5e7eb] bg-[#f8fafc] p-5 shadow-sm shadow-[#BBCFF9]">
-      <div className="flex items-start gap-1">
+    <div className="relative overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
+      <div className="flex items-start justify-between">
         {/* Content */}
-        <div className="flex-[5px] w-50 p-4">
+        <div className="flex-1 min-w-0 ">
           {/* Header */}
-          <div className="flex items-start justify-between">
+          <div className="flex items-start pb-4 justify-between">
             <div className="flex items-center gap-4">
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0"
@@ -78,61 +82,86 @@ export default function JobCard({
               >
                 {initial}
               </div>
-              <div className="min-w-0">
-                <h3 className="text-lg sm:text-xl font-semibold text-[#111827] truncate">
+              <div className="min-w-0 ">
+                <h3 className="text-lg sm:text-xl font-medium text-[#111827] truncate">
                   {title}
                 </h3>
                 {/* Company */}
                 <p className="mt-1 text-[12px] sm:text-sm text-muted truncate">
-                  {company} · {location}
+                  {company} · {location} ({workType})
                 </p>
               </div>
             </div>
           </div>
 
           {/* Tags */}
-          <div className="flex w-100 gap-2 mt-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-lg text-xs sm:text-sm font-medium"
-                style={{
-                  background: "#e7edff",
-                  color: "#2563EB",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="flex w-100 gap-2 ">
+            {tags.map((tag, idx) => {
+              const t = tag.toLowerCase();
+              let bg = "#e7edff";
+              let color = "#2563EB";
+              if (idx === 0) {
+                if (t === "contract" || t === "part-time" || t === "full-time" || t === "full time") {
+                  bg = "#B2E8F2";
+                  color = "#064E6A";
+                } else if (t === "freelance") {
+                  bg = "#D6C2F9";
+                  color = "#5B21B6";
+                } else {
+                  bg = "#e7edff";
+                  color = "#184EAB";
+                }
+              }
+              return (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-lg text-xs sm:text-sm font-medium"
+                  style={{ background: bg, color }}
+                >
+                  {tag}
+                </span>
+              );
+            })}
           </div>
 
           {/* Salary */}
-          <h4 className="mt-4 text-[12px] md:text-xl font-semibold text-[#111827]">
+          <h4 className="mt-4 text-[12px] py-1 md:text-xl font-medium text-[#111827]">
             {salary}
           </h4>
 
           {/* Footer */}
-          <p className="mt-1 text-sm text-[#6b7280]">
-            {applicants} · {postedAt}
-          </p>
+         <p className="mt-1 text-sm text-[#6b7280]">
+  {postedAt} . {applicants} apllicants
+</p>
         </div>
 
-        {/* Button */}
-        <Link
-          href={href}
-          className=" text-background flex bg-[#2563EB] sm:flex items-center gap-2 text-background rounded-lg bg-[#2563EB] px-5 py-3 mt-auto text-base font-semibold text-[#2563EB] hover:bg-primary/90 transition-all"
-        >
-          Apply Now
-        </Link>
-        <span
-              style={{
-                color: Propty.color,
-                transform: "rotate(280deg)",
-                float: "right",
-              }}
-            >
-              {Propty.icon}
-            </span>
+        <div className="flex flex-col items-end h-48 justify-between gap-2 mt-auto">
+          <span
+            style={{
+              color: Propty.color,
+              fontSize:"30px",
+              transform: "rotate(280deg)",
+            }}
+          >
+            {Propty.icon}
+          </span>
+          {status === "apply" ? (
+  <Link
+    href={href ?? "#"}
+    className="flex items-center gap-2 rounded-lg bg-[#2563EB] px-5 py-2 text-base font-semibold text-white hover:bg-[#1d4ed8] transition-all"
+  >
+    Apply
+  </Link>
+) : (
+  <button
+    disabled
+    className="flex items-center gap-2 rounded-lg border border-[#2563EB] px-5 py-2 text-base font-semibold text-[#2563EB] cursor-not-allowed opacity-80"
+  >
+     <Check size={18} />
+    Applied
+  </button>
+)}
+        </div>
       </div>
     </div>
   );
