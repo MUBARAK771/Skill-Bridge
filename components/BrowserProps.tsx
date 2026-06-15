@@ -69,8 +69,8 @@ export default function JobCard({
     color: avatarBg,
   };
   return (
-    <div className="relative overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm">
-      <div className="flex items-start justify-between">
+    <div className="relative overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#F8FAFC] p-4 sm:p-6 shadow-sm">
+      <div className="flex items-stretch justify-between">
         {/* Content */}
         <div className="flex-1 min-w-0 ">
           {/* Header */}
@@ -95,7 +95,7 @@ export default function JobCard({
           </div>
 
           {/* Tags */}
-          <div className="flex w-100 gap-2 ">
+          <div className="flex flex-wrap gap-2">
             {tags.map((tag, idx) => {
               const t = tag.toLowerCase();
               let bg = "#e7edff";
@@ -135,7 +135,7 @@ export default function JobCard({
 </p>
         </div>
 
-        <div className="flex flex-col items-end h-48 justify-between gap-2 mt-auto">
+        <div className="flex flex-col items-end self-stretch justify-between gap-2">
           <span
             style={{
               color: Propty.color,

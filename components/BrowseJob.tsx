@@ -208,12 +208,15 @@ export default function FeaturedBrowserJob() {
       {/* Section Header */}
       
       <Tabs defaultValue="All" className="w-full shadow-none ">
-  <TabsList className="mb-9 bg-transparent h-30 shadow-none w-[50%] px-1  py-7 justify-start" aria-label="Job Type Filter">
-    <TabsTrigger value="All" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">All</TabsTrigger>
-    <TabsTrigger value="full-time" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Full-time</TabsTrigger>
-    <TabsTrigger value="contract" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Contract</TabsTrigger>
-    <TabsTrigger value="freelance" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Freelance</TabsTrigger>
-    <TabsTrigger value="part-time" className="py-5 px-5 cursor-pointer focus:bg-[#DEE8FC]">Part-time</TabsTrigger>
+  <TabsList
+    className="mb-9 bg-transparent h-auto shadow-none w-full flex flex-nowrap overflow-x-auto px-1 py-2 sm:py-7 justify-start gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    aria-label="Job Type Filter"
+  >
+    <TabsTrigger value="All" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">All</TabsTrigger>
+    <TabsTrigger value="full-time" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">Full-time</TabsTrigger>
+    <TabsTrigger value="contract" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">Contract</TabsTrigger>
+    <TabsTrigger value="freelance" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">Freelance</TabsTrigger>
+    <TabsTrigger value="part-time" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">Part-time</TabsTrigger>
   </TabsList>
   <TabsContent value="All">{/* Job Cards Grid — 1 col mobile, 2 col md+ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-9 gap-x-14">
