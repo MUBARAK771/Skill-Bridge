@@ -43,7 +43,7 @@ export default function JobsPage() {
               alt="Job Status"
               className="
       absolute
-      right-[3%]
+      right-[3%]9
       top-[15%]
       w-[120px]
       md:w-[295px]
