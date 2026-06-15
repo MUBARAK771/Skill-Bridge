@@ -209,7 +209,7 @@ export default function FeaturedBrowserJob() {
       
       <Tabs defaultValue="All" className="w-full shadow-none ">
   <TabsList
-    className="mb-9 bg-transparent h-auto shadow-none w-full flex flex-nowrap overflow-x-auto px-1 py-2 sm:py-7 justify-start gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    className="mb-9 bg-transparent h-auto shadow-none w-120 flex flex-nowrap overflow-x-auto px-1 py-2 sm:py-7 justify-start gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-150"
     aria-label="Job Type Filter"
   >
     <TabsTrigger value="All" className="py-3 px-4 sm:py-5 sm:px-5 cursor-pointer focus:bg-[#DEE8FC] text-sm sm:text-base shrink-0">All</TabsTrigger>
