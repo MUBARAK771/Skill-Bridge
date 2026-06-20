@@ -1,4 +1,5 @@
 
+
 const PATHS = {
   Home: "/",
   Jobs: "/website/jobs",
@@ -10,5 +11,6 @@ const PATHS = {
   SignUp: "/signup",
   GetStarted: "/get-started",
   Success: "/success",
+  Employer: "/employer"
 };
-export default PATHS;
+export default PATHS;

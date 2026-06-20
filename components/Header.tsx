@@ -129,6 +129,10 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {/* Auth Header */}
+      <nav>
+        
+      </nav>
     </header>
   );
 }
