@@ -1,7 +1,7 @@
 "use client";
 
 import PATHS from "@/route";
-import { Bell, Menu, Search, User, X } from "lucide-react";
+import { Bell, Menu, Search, CircleUser, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -63,11 +63,11 @@ export default function EmployerHeader() {
             />
           </div>
           <button className="relative p-2 rounded-full hover:bg-[#F1F5F9] transition">
-            <Bell size={20} className="text-[#64748B]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#2563EB] rounded-full" />
+            <Bell size={22} className="text-[#64748B]" />
+            {/* <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#2563EB] rounded-full" /> */}
           </button>
-          <button className="w-9 h-9 rounded-full bg-[#E9EFFD] flex items-center justify-center hover:bg-[#DEE8FC] transition">
-            <User size={18} className="text-[#2563EB]" />
+          <button className="w-9 h-9 rounded-full flex items-center justify-center transition">
+            <CircleUser size={22} className="text-[#2563EB]" />
           </button>
         </div>
 
@@ -125,11 +125,11 @@ export default function EmployerHeader() {
           {/* Mobile icons row */}
           <div className="flex items-center gap-3 pt-2 border-t border-[#F1F5F9] mt-1">
             <button className="relative p-2 rounded-full hover:bg-[#F1F5F9] transition">
-              <Bell size={20} className="text-[#64748B]" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#2563EB] rounded-full" />
+              <Bell size={28} className="text-[#64748B]" />
+              {/* <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#2563EB] rounded-full" /> */}
             </button>
-            <button className="w-9 h-9 rounded-full bg-[#E9EFFD] flex items-center justify-center">
-              <User size={18} className="text-[#2563EB]" />
+            <button className="w-9 h-9 rounded-full flex items-center justify-center transition">
+              <CircleUser size={18} className="text-[#2563EB]" />
             </button>
           </div>
         </div>
