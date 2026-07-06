@@ -4,6 +4,7 @@ import { ArrowRight, CircleArrowRight, Tag } from "lucide-react";
 import Link from "next/link";
 
 export interface TalentCardProps {
+  
   company: string;
   location?: string;
   Name: string;

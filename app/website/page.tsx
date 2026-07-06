@@ -227,8 +227,8 @@ export default function Website() {
         <div className="flex justify-center">
           <Tabs defaultValue="account" className="w-full ">
             <TabsList className="bg-[#DEE8FC] w-max mx-auto rounded-lg border border-[#f3f3fe] mb-18 px-14 py-8">
-              <TabsTrigger value="account" className="py-5 px-5 cursor-pointer">Talent</TabsTrigger>
-              <TabsTrigger value="password" className="py-5 px-5 cursor-pointer">Employer</TabsTrigger>
+              <TabsTrigger value="account" className="py-5 px-5 cursor-pointer data-active:bg-[#FEFEFE]">Talent</TabsTrigger>
+              <TabsTrigger value="password" className="py-5 px-5 cursor-pointer data-active:bg-[#FEFEFE]">Employer</TabsTrigger>
             </TabsList>
 
             <TabsContent value="account">

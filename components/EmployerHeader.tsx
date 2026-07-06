@@ -8,9 +8,9 @@ import { useState } from "react";
 
 const employerNav = [
   { label: "Overview", path: PATHS.Employer },
-  { label: "My Jobs", path: "/employer/jobs" },
-  { label: "Browse Talents", path: PATHS.Talent },
-  { label: "Messages", path: "/employer/messages" },
+  { label: "My Jobs", path: PATHS.MyJobs },
+  { label: "Browse Talents", path: PATHS.EmployerTalent },
+  { label: "Messages", path: PATHS.Messages },
 ];
 
 export default function EmployerHeader() {

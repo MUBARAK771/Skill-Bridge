@@ -2,9 +2,11 @@ import Header from "@/components/Header";
 import FeaturedBrowserJob from "@/components/BrowseJob";
 import { Search } from "lucide-react";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 export default function JobsPage() {
+  const [search, setSearch] = useState("")
   return (
-    <div>
+    <div style={{overflowX:"hidden",}}>
       <Header />
       <div className="flex flex-col mt-29 max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 mt-10 gap-10 pb-24">
         <div>
@@ -19,6 +21,8 @@ export default function JobsPage() {
         <div className="text-muted border border-muted w-full p-4 flex gap-2 items-center pl-5 rounded-xl">
           <Search size={24} />
           <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
             type="text"
             id="search"
             placeholder="Search job, companies, skills......"

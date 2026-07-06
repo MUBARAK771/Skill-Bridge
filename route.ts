@@ -8,9 +8,13 @@ const PATHS = {
   NotFound: "/404",
   // Auth
   Login: "/login",
+  PostJob: "/employer/postJob",
+  MyJobs: "/employer/jobs",
+  EmployerTalent: "/employer/EmployerTalent",
   SignUp: "/signup",
   GetStarted: "/get-started",
   Success: "/success",
-  Employer: "/employer"
+  Employer: "/employer",
+  Messages: "/employer/messages",
 };
 export default PATHS;

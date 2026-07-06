@@ -132,9 +132,6 @@ function ApplicantCard({
   );
 }
 
-/* ────────────────────────────────────────────────────────── */
-/*  Page                                                      */
-/* ────────────────────────────────────────────────────────── */
 
 const applicants: ApplicantProps[] = [
   {
@@ -210,7 +207,7 @@ export default function EmployerPage() {
             Good Evening, Abdur-Roqeeb
           </h1>
           <Link
-            href="#"
+            href={PATHS.PostJob}
             className="inline-flex items-center gap-2 bg-[#2563EB] text-white px-5 py-4 rounded-xl font-semibold text-sm hover:bg-[#1d4ed8] transition shadow-sm self-start sm:self-auto"
           >
             <span className="w-5 h-5 text-center border border-white border-2 rounded-full flex items-center justify-center flex-shrink-0">
@@ -233,7 +230,7 @@ export default function EmployerPage() {
           {/* Active job card */}
           <div className="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-5 flex flex-col gap-5">
             {/* Card header */}
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between gap: 12px;">
               <div className="flex items-center gap-3">
                 <span
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white text-lg font-bold flex-shrink-0"
@@ -263,7 +260,7 @@ export default function EmployerPage() {
             {/* CTA */}
             <Link
               href={PATHS.Jobs}
-              className="mt-auto w-full text-center py-3 rounded-xl bg-[#2563EB] text-white font-semibold text-sm hover:bg-[#1d4ed8] transition"
+              className="mt-auto w-full text-center py-4 rounded-xl bg-[#2563EB] text-white font-semibold text-sm hover:bg-[#1d4ed8] transition"
             >
               Fill in Draft
             </Link>
@@ -271,7 +268,7 @@ export default function EmployerPage() {
         
           {/* Post a Job card */}
           <Link
-            href="#"
+            href={PATHS.PostJob}
             className="bg-[#EEF3FD] rounded-2xl border border-[#C7D9FB] flex flex-col items-center justify-center gap-3 py-12 sm:py-16 px-5 hover:bg-[#DEE8FC] transition group"
           >
             <div className="w-9 h-9 border-2 border-[#2563EB] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
