@@ -1,3 +1,4 @@
+"use client"
 import Header from "@/components/Header";
 import FeaturedBrowserJob from "@/components/BrowseJob";
 import { Search } from "lucide-react";

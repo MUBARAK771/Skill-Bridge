@@ -1,3 +1,4 @@
+"use client"
 import PATHS from "@/route";
 import { Search } from "lucide-react"
 import { useState } from "react";
