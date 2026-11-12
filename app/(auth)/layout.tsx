@@ -7,7 +7,7 @@ export default function AuthLayout({
     <div className="min-h-screen flex">
       {/* ── Left Panel ── */}
       <div
-        className="hidden lg:flex flex-col justify-between w-[42%] min-h-screen "
+        className="hidden lg:flex flex-col justify-between w-[42%] min-h-screen fixed top-0 left-0 bottom-0 overflow-hidden z-10"
         style={{ background: "#FFFF" }}
       >
         {/* Arch / Pill Shape */}
@@ -65,8 +65,8 @@ export default function AuthLayout({
       </div>
 
       {/* ── Right Panel ── */}
-      <div className="flex-1 flex items-center justify-center bg-white min-h-screen px-6 py-12">
-        <div className="w-full max-w-[420px]">{children}</div>
+      <div className="flex-1 flex items-center justify-end bg-white min-h-screen px-6 py-12 lg:ml-[42%] overflow-y-auto">
+        <div className="md:max-w-[420px] md:mr-37 w-full">{children}</div>
       </div>
     </div>
   );

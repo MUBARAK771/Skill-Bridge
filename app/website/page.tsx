@@ -37,35 +37,23 @@ interface Step {
 /* ─── Data ───────────────────────────────────────── */
 const JobList: Category[] = [
   {
-    label: "Development & IT",
-    total: "4,200+ jobs",
-    icon: <Cloud size={28} />,
+    label: "Development & IT"
   },
   {
     label: "Design & Creative",
-    total: "2,100+ jobs",
-    icon: <Palette size={28} />,
   },
   {
     label: "Engineering & Architecture",
-    total: "1,200+ jobs",
-    icon: <Megaphone size={28} />,
   },
   {
     label: "Sales & Marketing",
-    total: "4,200+ jobs",
-    icon: <BarChart2 size={28} />,
   },
   {
     label: "Data & Analytics",
-    total: "2,100+ jobs",
-    icon: <Shield size={28} />,
   },
-  { label: "HR & Training", total: "1,200+ jobs", icon: <Music2 size={28} /> },
+  { label: "HR & Training", },
   {
     label: "Writing & Translation",
-    total: "1,200+ jobs",
-    icon: <Smartphone size={28} />,
   },
   { label: "Mobile Dev.", total: "900+ jobs", icon: <TrendingUp size={28} /> },
 ];
@@ -196,7 +184,7 @@ export default function Website() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-5xl mt-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full px-7 mt-12">
           {JobList.map((item) => (
             <div
               key={item.label}
@@ -206,7 +194,6 @@ export default function Website() {
               <h3 className="font-semibold text-xs sm:text-sm md:text-[22px] text-center leading-snug">
                 {item.label}
               </h3>
-              <p className="text-muted text-[11px] sm:text-sm">{item.total}</p>
             </div>
           ))}
         </div>
@@ -226,9 +213,9 @@ export default function Website() {
         {/* Division */}
         <div className="flex justify-center">
           <Tabs defaultValue="account" className="w-full ">
-            <TabsList className="bg-[#DEE8FC] w-max mx-auto rounded-lg border border-[#f3f3fe] mb-18 px-14 py-8">
-              <TabsTrigger value="account" className="py-5 px-5 cursor-pointer data-active:bg-[#FEFEFE]">Talent</TabsTrigger>
-              <TabsTrigger value="password" className="py-5 px-5 cursor-pointer data-active:bg-[#FEFEFE]">Employer</TabsTrigger>
+            <TabsList className="bg-[#DEE8FC] w-max mx-auto rounded-lg border border-[#f3f3fe] mb-18 px-4 py-7">
+              <TabsTrigger value="account" className="py-5 px-9 cursor-pointer data-active:bg-[#FEFEFE]">Talent</TabsTrigger>
+              <TabsTrigger value="password" className="py-5 px-9 cursor-pointer data-active:bg-[#FEFEFE]">Employer</TabsTrigger>
             </TabsList>
 
             <TabsContent value="account">
@@ -252,7 +239,7 @@ export default function Website() {
 
                     <h3 className="font-bold  text-base sm:text-lg md:text-[24.13px]" 
                     style={{color:s.color}}>{s.title}</h3>
-                    <p className="text-muted text-sm leading-relaxed max-w-[220px] mx-auto">
+                    <p className="text-muted text-sm leading-relaxed text-center max-w-[268px] ">
                       {s.desc}
                     </p>
                   </div>

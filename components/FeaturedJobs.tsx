@@ -73,7 +73,7 @@ export default function FeaturedJob() {
       </div>
 
       {/* Job Cards Grid — 1 col mobile, 2 col md+ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-5 ">
         {jobs.map((job, i) => (
           <JobCard key={i} {...job} />
         ))}

@@ -107,7 +107,7 @@ export default function JobCard({
           </div>
 
           {/* Salary */}
-          <h4 className="mt-4 text-[12px] md:text-xl font-semibold text-[#111827]">
+          <h4 className="mt-4 text-[12px] md:text-xl font-medium text-[#111827]">
             {salary}
           </h4>
 

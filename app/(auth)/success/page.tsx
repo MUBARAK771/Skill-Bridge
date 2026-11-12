@@ -56,6 +56,12 @@ export default function SuccessPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleContinue = () => {
+    const storedUser = JSON.parse(localStorage.getItem("sb_user") || "null");
+    const target = storedUser?.role === "employer" ? "/employer" : "/talent/dashboard";
+    router.push(target);
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center px-5 backdrop-blur-sm"
@@ -85,7 +91,7 @@ export default function SuccessPage() {
         </div>
 
         <button
-          onClick={() => router.push("/")}
+          onClick={handleContinue}
           className="mt-3 w-full max-w-xl rounded-xl bg-[#2563EB] py-3.5 text-base font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-blue-700"
         >
           Get Started

@@ -32,25 +32,65 @@ function SignupForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.agreed) return;
-    localStorage.setItem("sb_user", JSON.stringify({ ...form, role }));
+
+    const normalizedUser = {
+      ...form,
+      firstName: form.firstName.trim(),
+      lastName: form.lastName.trim(),
+      email: form.email.trim().toLowerCase(),
+      password: form.password,
+      state: form.state,
+      role,
+    };
+
+    const savedUsers = JSON.parse(localStorage.getItem("sb_users") || "[]");
+    const userList = Array.isArray(savedUsers) ? savedUsers : [];
+
+    const existingIndex = userList.findIndex(
+      (user: { email?: string }) => user.email === normalizedUser.email
+    );
+
+    const updatedUsers =
+      existingIndex >= 0
+        ? userList.map((user: { email?: string }, index: number) =>
+            index === existingIndex ? normalizedUser : user
+          )
+        : [...userList, normalizedUser];
+
+    localStorage.setItem("sb_users", JSON.stringify(updatedUsers));
+    localStorage.setItem("sb_user", JSON.stringify(normalizedUser));
     router.push("/success");
   }
-
+ const roleNav = role === "employer"? "Looking for Opportunity," :"Hire professionals,";
+ const roleLink = role === "employer"? "/signup?role=talent" :"/signup?role=employer";
+//  if(role === "employer"){
+//     roleNav =""
+//  }
   const heading =
-    role === "employer" ? "Sign up to hire Talent" : "Sign up as Talent";
-
+    role === "employer" ? "Sign up to hire Talent" : "Sign up to find Opportunity";
+    const subheadings = role === "employer" ? "Hire professionals, and grow your network in one platform.":"Build your profile, discover work and grow your skills.";
   return (
-    <div className="flex flex-col items-center text-center">
+    <div className="flex flex-col items-center justify-start text-center">
       {/* Logo */}
+      <p className="mb-4 flex w-full md:ml-78 text-[#525252] justify-end text-right text-sm text-gray-600">
+        {roleNav}
+        <Link
+          href={roleLink}
+          className="ml-1 font-semibold text-[#2563EB] hover:underline"
+        >
+          Click Here
+        </Link>
+      </p>
             <Link href="/"><img src="/Log-logo.svg" alt="Skillbridge" className="w-36 mb-6" /></Link>
 
 
       <h1
-        className="text-xl font-bold mb-8"
-        style={{ color: "#2563EB" }}
+        className="text-xl font-bold"
+        style={{ color: "#080808" }}
       >
         {heading}
       </h1>
+      <p className="text-sm my-3">{subheadings}</p>
 
       <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
         {/* First + Last Name */}
@@ -62,7 +102,7 @@ function SignupForm() {
               placeholder="First Name"
               value={form.firstName}
               onChange={(e) => set("firstName", e.target.value)}
-              className="border-gray-300 rounded-lg px-4 py-3 text-sm"
+              className="border-[#525252] rounded-sm px-4 py-5 text-sm"
             />
           </div>
           <div className="flex flex-col gap-1 text-left flex-1">
@@ -72,7 +112,7 @@ function SignupForm() {
               placeholder="Last Name"
               value={form.lastName}
               onChange={(e) => set("lastName", e.target.value)}
-              className="border-gray-300 rounded-lg px-4 py-3 text-sm"
+              className="border-[#525252] rounded-sm px-4 py-5 text-sm"
             />
           </div>
         </div>
@@ -86,7 +126,7 @@ function SignupForm() {
             placeholder="example@gmail.com"
             value={form.email}
             onChange={(e) => set("email", e.target.value)}
-            className="border-gray-300 rounded-lg px-4 py-3 text-sm"
+            className="border-[#525252] rounded-sm px-4 py-5 text-sm"
           />
         </div>
 
@@ -101,7 +141,7 @@ function SignupForm() {
               placeholder="Password (8 or more characters)"
               value={form.password}
               onChange={(e) => set("password", e.target.value)}
-              className="w-full border-gray-300 rounded-lg px-4 py-3 pr-11 text-sm"
+              className="w-full border-[#525252] rounded-sm px-4 py-5 pr-11 text-sm"
             />
             <button
               type="button"
@@ -121,7 +161,7 @@ function SignupForm() {
               required
               value={form.state}
               onChange={(e) => set("state", e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 pr-10 text-sm outline-none focus:border-blue-500 transition appearance-none bg-white"
+              className="w-full border border-[#525252] rounded-sm px-4 py-5 pr-10 text-sm outline-none focus:border-blue-500 transition appearance-none bg-white"
             >
               <option value="" disabled>Lagos</option>
               {STATES.map((s) => (

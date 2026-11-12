@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
@@ -10,13 +10,51 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
+  const [error, setError] = useState("");
+  const [loginRequired, setLoginRequired] = useState(false);
+  const [loginRole, setLoginRole] = useState<"talent" | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setLoginRequired(params.get("required") === "1");
+    setLoginRole(params.get("role") === "talent" ? "talent" : null);
+  }, []);
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    // Store mock session
-    localStorage.setItem("sb_session", JSON.stringify({ email, remember }));
-    router.push("/");
+
+    const normalizedEmail = email.trim().toLowerCase();
+    const savedUsers = JSON.parse(localStorage.getItem("sb_users") || "[]");
+    const legacyUser = JSON.parse(localStorage.getItem("sb_user") || "null");
+    const possibleUsers = Array.isArray(savedUsers) ? savedUsers : [];
+
+    const match =
+      [...possibleUsers, ...(legacyUser ? [legacyUser] : [])].find(
+        (user: { email?: string; password?: string; role?: string }) =>
+          user.email === normalizedEmail && user.password === password
+      );
+
+    if (!match) {
+      setError("Invalid email or password. Please try again.");
+      return;
+    }
+
+    localStorage.setItem(
+      "sb_session",
+      JSON.stringify({ email: match.email, role: match.role, remember })
+    );
+
+    setError("");
+    const requestedPath = new URLSearchParams(window.location.search).get("redirect");
+    const safeRequestedPath =
+      requestedPath?.startsWith("/") && !requestedPath.startsWith("//")
+        ? requestedPath
+        : null;
+    router.push(
+      safeRequestedPath ||
+        (match.role === "employer" ? "/employer" : "/talent/dashboard")
+    );
   }
 
   return (
@@ -24,16 +62,31 @@ export default function LoginPage() {
       {/* Logo */}
       <Link href="/"><img src="/Log-logo.svg" alt="Skillbridge" className="w-36 mb-6" /></Link>
 
-      <h1 className="text-2xl font-bold text-gray-900 mb-1">Welcome Back</h1>
+      <h1 className="text-2xl font-bold text-gray-900 mb-1">
+        {loginRole === "talent" ? "Talent Login" : "Welcome Back"} 
+      </h1>
       <p className="text-sm text-gray-500 mb-8">
-        Login to continue managing your Skillbridge dashboard
+        {loginRole === "talent"
+          ? "Log in to continue as a talent on Skillbridge"
+          : "Login to continue managing your Skillbridge dashboard"}
       </p>
+      {loginRequired ? (
+        <p className="w-full mb-5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm text-blue-700">
+          Please sign up or log in to access Browse Jobs and Talent.
+        </p>
+      ) : null}
 
       <form onSubmit={handleLogin} className="w-full flex flex-col gap-5">
+        {error ? (
+          <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-600">
+            {error}
+          </div>
+        ) : null}
+
         {/* Email */}
         <div className="flex flex-col gap-1.5 text-left">
-          <label className="text-sm font-medium text-gray-700">
-            Email Address
+          <label className="tex t-sm font-medium text-gray-700">
+            Email Address                        
           </label>
           <Input
             type="email"
@@ -79,7 +132,7 @@ export default function LoginPage() {
             Remember Me
           </label>
           <Link
-            href="#"
+            href="/forgot-password"
             className="text-sm font-medium"
             style={{ color: "#2563EB" }}
           >
