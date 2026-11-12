@@ -5,25 +5,12 @@ import Hero from "@/components/Hero";
 import PATHS from "@/route";
 import { Plus, SearchIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  BarChart2,
-  CircleArrowRight,
-  Cloud,
-  Megaphone,
-  Music2,
-  Palette,
-  Shield,
-  Smartphone,
-  TrendingUp,
-} from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
 /* ─── Types ─────────────────────────────────────── */
 interface Category {
   label: string;
-  total: string;
-  icon: ReactNode;
 }
 
 interface Step {
@@ -55,7 +42,7 @@ const JobList: Category[] = [
   {
     label: "Writing & Translation",
   },
-  { label: "Mobile Dev.", total: "900+ jobs", icon: <TrendingUp size={28} /> },
+  { label: "Mobile Dev." },
 ];
 
 const HowItWorksSteps: Step[] = [
