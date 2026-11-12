@@ -150,7 +150,7 @@ const conversations = [
 
 function PageHeading({ title, description }: { title: string; description: string }) {
   return (
-    <header className="mx-2 px-4 pb-12 pt-20">
+    <header className=" pb-12">
       {/* <p className=" text-xs font-medium text-[#64748B]">Workspace</p> */}
       <h1 className="text-3xl font-medium tracking-tight text-[#111827] sm:text-[32px]">{title}</h1>
       <p className="mt-2 text-sm text-[#64748B]">{description}</p>
